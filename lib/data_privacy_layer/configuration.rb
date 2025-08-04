@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'errors'
+require 'data_privacy_layer/errors'
 
 module DataPrivacyLayer
   class Configuration
