@@ -1,0 +1,12 @@
+Copyright © 2025 JisrHr. All rights reserved.
+
+This software is the confidential and proprietary information of JisrHr (“Confidential Information”). 
+You shall not disclose such Confidential Information and shall use it only in accordance with the terms of your internal 
+software usage policy or organization agreements.
+
+This software is not open source and is licensed only for internal use by authorized employees, contractors, and affiliates 
+of JisrHr.
+
+Redistribution, modification, or use outside of JisrHr's systems without explicit permission is strictly prohibited.
+
+For inquiries, please contact: engineering@jisrhr.com

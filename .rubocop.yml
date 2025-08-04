@@ -1,0 +1,35 @@
+AllCops:
+  TargetRubyVersion: 2.7.2
+  NewCops: enable
+  Exclude:
+    - spec/**/*.rb
+    - lib/buslnk_client/faraday/raise_http_exception.rb
+    - vendor/**/*
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: true
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Layout/ArgumentAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+
+Metrics/MethodLength:
+  Max: 20
