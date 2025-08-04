@@ -188,6 +188,28 @@ lib/data_privacy_layer/team_configs/
 }
 ```
 
+🏛️ Database Migration (Audit Logs)
+This gem supports audit logging to track anonymization operations.
+
+Generate the migration:
+
+```
+bundle exec rails generate data_privacy_layer:install
+```
+
+You’ll see:
+
+```
+db/migrate/20250103120000_create_data_privacy_audit_logs.rb
+```
+You may customize the generated migration file as needed.
+
+### Run the migration:
+
+```
+bundle exec rails db:migrate
+```
+
 ## 🎯 Usage
 
 ### Command Line Interface
