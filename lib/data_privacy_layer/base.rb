@@ -3,6 +3,7 @@
 module DataPrivacyLayer
   class Base
     extend DataPrivacyLayer::Abstract
+
     abstract_methods :process
 
     attr_reader :organization_id, :dry_run, :batch_size

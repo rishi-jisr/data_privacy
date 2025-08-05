@@ -210,6 +210,29 @@ You may customize the generated migration file as needed.
 bundle exec rails db:migrate
 ```
 
+### 📦 PaperTrail Versions Deletion
+
+If your application uses the [`paper_trail`](https://github.com/paper-trail-gem/paper_trail) gem to track model changes, you can enable automatic deletion of associated versions during PDPL anonymization or deletion.
+
+#### 🔧 Enabling Version Cleanup
+
+In your initializer (typically `config/initializers/data_privacy_layer.rb`), set:
+
+```ruby
+DataPrivacyLayer.configure do |config|
+  config.delete_paper_trail_versions = true
+end
+```
+
+When this flag is enabled and the strategy is not in dry_run mode, the gem will automatically delete versions from the versions table that match the anonymized records.
+
+🔍 How It Works
+The system uses item_type and item_id columns in the versions table to find related versions.
+
+It performs a delete_all using:
+PaperTrail::Version.where(item_type: model_class.name, item_id: record_ids).delete_all
+
+
 ## 🎯 Usage
 
 ### Command Line Interface

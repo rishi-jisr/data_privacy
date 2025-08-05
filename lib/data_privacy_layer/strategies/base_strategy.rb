@@ -4,6 +4,7 @@ module DataPrivacyLayer
   module Strategies
     class BaseStrategy
       extend DataPrivacyLayer::Abstract
+
       abstract_methods :anonymize_value
 
       attr_reader :column_name, :table_name
