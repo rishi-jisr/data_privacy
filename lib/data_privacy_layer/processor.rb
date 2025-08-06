@@ -231,8 +231,8 @@ module DataPrivacyLayer
       process_column(model_name, table_name, column_name)
     end
 
-    def cleanup_versions_for(model_class, record_ids)
-      PaperTrail::Version.where(item_type: model_class.name, item_id: record_ids).delete_all
+    def cleanup_versions_for(model_name, record_ids)
+      PaperTrail::Version.where(item_type: model_name, item_id: record_ids).delete_all
     end
 
     def delete_versions?

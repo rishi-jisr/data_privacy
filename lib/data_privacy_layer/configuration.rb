@@ -4,12 +4,13 @@ require 'data_privacy_layer/errors'
 
 module DataPrivacyLayer
   class Configuration
-    attr_accessor :adapter_type, :config_path, :logger
+    attr_accessor :adapter_type, :config_path, :logger, :delete_paper_trail_versions
 
     def initialize
       @adapter_type = :rails # Default for current setup
       @config_path = Rails.root.join('lib/data_privacy_layer/team_configs')
       @logger = Rails.logger
+      @delete_paper_trail_versions = false
     end
 
     def adapter
