@@ -66,7 +66,7 @@ module DataPrivacyLayer
         audit_log(
           action: 'delete_organization_records',
           table_name: table_name,
-          column_name: nil,
+          column_name: 'Full Table ',
           records_count: deleted_count,
           strategy: 'table_deletion'
         )
@@ -107,7 +107,7 @@ module DataPrivacyLayer
       sample_details = []
       batch_count = 0
 
-      process_records_in_batches(table_name, column_name) do |batch_records|
+      process_records_in_batches(model_name, table_name, column_name) do |batch_records|
         batch_count += 1
         DataPrivacyLayer.configuration.logger.info("Processing #{table_name}.#{column_name} batch #{batch_count}: #{batch_records.size} records (#{dry_run ? "DRY RUN" : "LIVE"})")
 
@@ -155,8 +155,8 @@ module DataPrivacyLayer
       end
     end
 
-    def process_records_in_batches(table_name, column_name)
-      model_class = table_name.classify.constantize
+    def process_records_in_batches(model_name, table_name, column_name)
+      model_class = model_name.constantize
       scope = model_class.select(:id, column_name).where.not(column_name => nil)
       scope = scope.where(organization_id: organization_id) if column_exists?(table_name, 'organization_id')
 
