@@ -158,7 +158,14 @@ module DataPrivacyLayer
     def process_records_in_batches(model_name, table_name, column_name)
       model_class = model_name.constantize
       scope = model_class.select(:id, column_name).where.not(column_name => nil)
-      scope = scope.where(organization_id: organization_id) if column_exists?(table_name, 'organization_id')
+
+      if column_exists?(table_name, 'organization_id')
+        scope = scope.where(organization_id: organization_id)
+      elsif model_name == 'Organization'
+        scope = scope.where(id: organization_id)
+      else
+        model_class.none
+      end
 
       scope.find_in_batches(batch_size: batch_size) do |batch|
         records = batch.map { |r| { 'id' => r.id, column_name => r.send(column_name) } }

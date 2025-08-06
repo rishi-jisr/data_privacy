@@ -12,7 +12,7 @@ module DataPrivacyLayer
         return nil if original_value.blank?
 
         begin
-          json_data = JSON.parse(original_value)
+          json_data = original_value
           return original_value if json_data.blank?
 
           anonymized_data = process_json_fields(json_data, @json_config['field_strategies'] || {})
