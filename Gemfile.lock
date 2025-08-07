@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    data_privacy_layer (1.0.0)
+    data_privacy_layer (1.0.6)
       rails (>= 6.0)
+      uuidtools
 
 GEM
   remote: https://rubygems.org/
@@ -245,6 +246,7 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    uuidtools (3.0.0)
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
@@ -264,6 +266,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.6)
   rubocop-rspec (~> 2.6)
   timecop
+  uuidtools
 
 BUNDLED WITH
    2.6.2

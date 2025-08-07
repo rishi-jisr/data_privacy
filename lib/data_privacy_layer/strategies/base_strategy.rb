@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+require 'uuidtools'
+
 module DataPrivacyLayer
   module Strategies
     class BaseStrategy
+
+      # This UUID namespace can be constant or passed in from config
+      UUID_NAMESPACE = UUIDTools::UUID.parse('6ba7b810-9dad-11d1-80b4-00c04fd430c8')
+
       extend DataPrivacyLayer::Abstract
 
       abstract_methods :anonymize_value
@@ -48,10 +55,10 @@ module DataPrivacyLayer
         ApplicationRecord.connection.exec_query(query, 'PDPL Update', [new_value, record_id])
       end
 
-      def generate_deterministic_hash(value)
-        # Use a consistent salt for deterministic hashing
-        salt = Rails.application.secret_key_base[0..31]
-        Digest::SHA256.hexdigest("#{salt}#{value}")
+      def generate_deterministic_uuid(value)
+        return nil if value.blank?
+
+        UUIDTools::UUID.sha1_create(UUID_NAMESPACE, value.to_s.strip).to_s
       end
     end
   end

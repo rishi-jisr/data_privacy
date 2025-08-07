@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in buslnk_client.gemspec
 gemspec
 
+gem 'uuidtools'
+
 group :development, :test do
   gem 'byebug'
   gem 'rake', '~> 13.0'

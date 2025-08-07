@@ -17,4 +17,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rails', '>= 6.0'
   spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.add_dependency "uuidtools"
+
 end

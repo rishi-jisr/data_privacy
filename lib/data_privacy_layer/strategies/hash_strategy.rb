@@ -7,7 +7,7 @@ module DataPrivacyLayer
         return nil if original_value.blank?
 
         # Create a deterministic hash with prefix to indicate it's hashed
-        "HASH_#{generate_deterministic_hash(original_value.to_s.strip)}"
+        "UUID5_#{generate_deterministic_uuid(original_value)}"
       end
     end
   end
